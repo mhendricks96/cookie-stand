@@ -1,19 +1,36 @@
 'use strict';
 console.log('yeah, mike');
 
+const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm',];
 
+function randomCustomerPerHour(){
 
-let seattleStore = {
-  name: 'seattleStore',
-  minHourly: 23,
-  maxHourly: 65,
-  avgPerCustomer: 6.3,
-  customersPerHour: function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-  }
 };
 
+let seattle = {
+  minHourlyCustomers: 23,
+  maxHourlyCustomers: 65,
+  avgPerCustomer: 6.3,
+  cookiesSoldPerHourArray: [],
+  dailyTotal: 0,
+  randomCustomersEachHour: function () {
+    return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers);
+  },
+  calcCookiesSoldEachHour: function (){
+    //let reandomCustomersforOneHour = this.randomCustomersEachHour();
+    for (var i = 0; i < hours.length; i++){
+      let totalSalesPerHour = math.ceil(this.randomCustomersEachHour)() * this.avgPerCustomer();
+      
+    }
+    //  multiply customer number times avg
+    //  handle the number. round up
+    //  push into the cookiesSoldPerHourArray
+  
+    render: function (){
+    this.calcCookiesSoldEachHour();
+    //do something
+  }
+},
 
-console.log(seattleStore);
+
+seattle.render();
