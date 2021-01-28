@@ -3,12 +3,11 @@ console.log('yeah, mike');
 
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm',];
 
-//et myContainer = document.getElementById('container');
-//let section = document.createElement('section');
+
 let seattleList = document.getElementById('seattle');
 let tokyoList = document.getElementById('tokyo');
 let dubaiList = document.getElementById('dubai');
-let parisList = document.getElementById('Paris');
+let parisList = document.getElementById('paris');
 let limaList = document.getElementById('lima');
 //let section = document.createElement('section');
 //myContainer.appendChild(section);
@@ -137,11 +136,6 @@ let dubaiStore = {
 
 
 
-
-
-
-
-
 let parisStore = {
   name: 'paris',
   minHourlyCustomers: 20,
@@ -178,7 +172,6 @@ let parisStore = {
     parisList.appendChild(totalSalesFinal);
   },
 };
-
 
 
 
