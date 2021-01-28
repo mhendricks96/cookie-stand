@@ -12,13 +12,16 @@ let seattle = {
   maxHourlyCustomers: 65,
   avgPerCustomer: 6.3,
   cookiesSoldPerHourArray: [],
-  dailyStoreTotal: 0,
-  randomCustomersEachHour: function getRandomIntInclusive(min, max) {
+  dailyTotal: 0,
+  randomCustomersEachHour: function () {
     return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers);
   },
   calcCookiesSoldEachHour: function (){
-    let reandomCustomersforOneHour = this.randomCustomersEachHour();
-    for (var i = 0; i < hours.length; i++)
+    //let reandomCustomersforOneHour = this.randomCustomersEachHour();
+    for (var i = 0; i < hours.length; i++){
+      let totalSalesPerHour = math.ceil(this.randomCustomersEachHour)() * this.avgPerCustomer();
+      
+    }
     //  multiply customer number times avg
     //  handle the number. round up
     //  push into the cookiesSoldPerHourArray
