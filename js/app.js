@@ -23,7 +23,7 @@ let seattle = {
     }
   },
   //  multiply customer number times avg
-  //  handle the number. round up
+  //  handle the number. round uppp
   //  push into the cookiesSoldPerHourArray
 
   render: function () {
