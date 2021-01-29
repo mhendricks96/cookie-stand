@@ -76,9 +76,7 @@ let tokyoStore = {
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+
   render: function () {
     this.calcCookiesSoldHourly();
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
@@ -116,9 +114,7 @@ let dubaiStore = {
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+
   render: function () {
     this.calcCookiesSoldHourly();
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
@@ -155,9 +151,7 @@ let parisStore = {
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+
   render: function () {
     this.calcCookiesSoldHourly();
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
