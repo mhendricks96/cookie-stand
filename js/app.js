@@ -1,20 +1,17 @@
 'use strict';
 console.log('yeah, mike');
-
+//global variables
+//hours array
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm',];
 
-
+//get elements by id for 5 lists
 let seattleList = document.getElementById('seattle');
 let tokyoList = document.getElementById('tokyo');
 let dubaiList = document.getElementById('dubai');
 let parisList = document.getElementById('paris');
 let limaList = document.getElementById('lima');
-//let section = document.createElement('section');
-//myContainer.appendChild(section);
 
-
-//let article = document.createElement('article');
-//section.appendChild(article);
+// write 5 object literals
 
 
 let seattleStore = {
@@ -24,30 +21,32 @@ let seattleStore = {
   avgPerCustomer: 6.3,
   cookiesSoldPerHourArray: [],
   dailyTotal: 0,
-
+  //get random number of customers for an hour
   randomCustomersEachHour: function () {
     return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers);
   },
-
+  //calculate the number of cookies for each hour
   calcCookiesSoldHourly: function (){
-    this.randomCustomersEachHour();
     for (let i = 0; i < hours.length; i++){
-      //let totalSalesPerHour = Math.floor(this.randomCustomersEachHour)() * this.avgPerCustomer();
-      this.cookiesSoldPerHourArray.push(Math.ceil(this.randomCustomersEachHour() * this.avgPerCustomer));
+      let randomCust = this.randomCustomersEachHour();//tethers this function to randomCustomersEachHourFunction
+      let hourlyTotal = Math.ceil(randomCust * this.avgPerCustomer);
+      this.cookiesSoldPerHourArray.push(hourlyTotal);
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+ 
+  //render results. at this point we have 14 hours of cookie data.
   render: function () {
-    this.calcCookiesSoldHourly();
+    this.calcCookiesSoldHourly();//continues the line of tethering
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
-
+      //create element
       let li = document.createElement('li');
+      //give it content
       li.textContent = `${hours[i]}: ${(this.cookiesSoldPerHourArray[i])} cookies`;
+      //append it to the DOM
       seattleList.appendChild(li);
     }
+    //Total
     let totalSalesFinal = document.createElement('li');
     totalSalesFinal.textContent = `Total: ${this.dailyTotal} cookies.`;
     seattleList.appendChild(totalSalesFinal);
@@ -70,16 +69,14 @@ let tokyoStore = {
   },
 
   calcCookiesSoldHourly: function (){
-    this.randomCustomersEachHour();
     for (let i = 0; i < hours.length; i++){
-      //let totalSalesPerHour = Math.floor(this.randomCustomersEachHour)() * this.avgPerCustomer();
-      this.cookiesSoldPerHourArray.push(Math.ceil(this.randomCustomersEachHour() * this.avgPerCustomer));
+      let randomCust = this.randomCustomersEachHour();//tethers this function to randomCustomersEachHourFunction
+      let hourlyTotal = Math.ceil(randomCust * this.avgPerCustomer);
+      this.cookiesSoldPerHourArray.push(hourlyTotal);
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+
   render: function () {
     this.calcCookiesSoldHourly();
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
@@ -110,16 +107,14 @@ let dubaiStore = {
   },
 
   calcCookiesSoldHourly: function (){
-    this.randomCustomersEachHour();
     for (let i = 0; i < hours.length; i++){
-      //let totalSalesPerHour = Math.floor(this.randomCustomersEachHour)() * this.avgPerCustomer();
-      this.cookiesSoldPerHourArray.push(Math.ceil(this.randomCustomersEachHour() * this.avgPerCustomer));
+      let randomCust = this.randomCustomersEachHour();//tethers this function to randomCustomersEachHourFunction
+      let hourlyTotal = Math.ceil(randomCust * this.avgPerCustomer);
+      this.cookiesSoldPerHourArray.push(hourlyTotal);
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+
   render: function () {
     this.calcCookiesSoldHourly();
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
@@ -149,16 +144,14 @@ let parisStore = {
   },
 
   calcCookiesSoldHourly: function (){
-    this.randomCustomersEachHour();
     for (let i = 0; i < hours.length; i++){
-      //let totalSalesPerHour = Math.floor(this.randomCustomersEachHour)() * this.avgPerCustomer();
-      this.cookiesSoldPerHourArray.push(Math.ceil(this.randomCustomersEachHour() * this.avgPerCustomer));
+      let randomCust = this.randomCustomersEachHour();//tethers this function to randomCustomersEachHourFunction
+      let hourlyTotal = Math.ceil(randomCust * this.avgPerCustomer);
+      this.cookiesSoldPerHourArray.push(hourlyTotal);
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+
   render: function () {
     this.calcCookiesSoldHourly();
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
@@ -188,16 +181,15 @@ let limaStore = {
   },
 
   calcCookiesSoldHourly: function (){
-    this.randomCustomersEachHour();
     for (let i = 0; i < hours.length; i++){
-      //let totalSalesPerHour = Math.floor(this.randomCustomersEachHour)() * this.avgPerCustomer();
-      this.cookiesSoldPerHourArray.push(Math.ceil(this.randomCustomersEachHour() * this.avgPerCustomer));
+      let randomCust = this.randomCustomersEachHour();//tethers this function to randomCustomersEachHourFunction
+      let hourlyTotal = Math.ceil(randomCust * this.avgPerCustomer);
+      this.cookiesSoldPerHourArray.push(hourlyTotal);
       this.dailyTotal = this.dailyTotal + this.cookiesSoldPerHourArray[i];
     }
   },
-  //  multiply customer number times avg
-  //  handle the number. round uppp
-  //  push into the cookiesSoldPerHourArray
+
+
   render: function () {
     this.calcCookiesSoldHourly();
     for (let i = 0; i < this.cookiesSoldPerHourArray.length; i++){
@@ -212,7 +204,7 @@ let limaStore = {
   },
 };
 
-
+//Executable code
 seattleStore.render();
 tokyoStore.render();
 dubaiStore.render();
