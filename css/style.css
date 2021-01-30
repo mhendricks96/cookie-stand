@@ -3,7 +3,7 @@
 }
 
 
-ul {
-  float: left;
-  padding: 50px;
+#cookie-table {
+  position: absolute;
+  
 }

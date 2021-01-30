@@ -72,11 +72,17 @@ Store.prototype.render = function () {
 
 
 let seattleStore = new Store('seattle', 23, 65, 6.3, []);
-
+let tokyoStore = new Store('tokyo', 3, 24, 1.2, []);
+let dubaiStore = new Store('dubai', 11, 38, 3.7, []);
+let parisStore = new Store('paris', 20, 38, 2.3, []);
+let limaStore = new Store('lima', 2, 16, 4.6, []);
 
 
 seattleStore.render();
-
+tokyoStore.render();
+dubaiStore.render();
+parisStore.render();
+limaStore.render();
 
 
 
