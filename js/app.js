@@ -8,6 +8,8 @@ const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm',
 //let storeTable = document.getElementById('StoreSales');
 let myContainer = document.getElementById('container');
 let cookieTable = document.getElementById('cookie-table');
+let tableHeader = document.getElementById('table-header');
+//let tablefooter = document.getElementById('table-footer');
 
 console.log(myContainer);
 
@@ -59,7 +61,7 @@ Store.prototype.render = function () {
     //create element
     let td = document.createElement('td');
     //give it content
-    td.textContent = `${(this.cookiesPerHour[i])}`;
+    td.textContent = this.cookiesPerHour[i];
     //append it to the DOM
     tr.appendChild(td);
   }
@@ -69,6 +71,24 @@ Store.prototype.render = function () {
   tr.appendChild(td);
 };
 
+
+function renderHeader(){
+  let tr = document.createElement('tr');
+  let th = document.createElement('th');
+  th.textContent = '';
+  tr.appendChild(th);
+  for (let i = 0; i < hours.length; i++){
+    let td=document.createElement('td');
+    td.textContent = hours[i];
+    tr.appendChild(td);
+  }
+  let td = document.createElement('td');
+  td.textContent = 'Store Total';
+  tr.appendChild(td);
+  tableHeader.appendChild(tr);
+
+
+}
 
 let seattleStore = new Store('seattle', 23, 65, 6.3, []);
 let tokyoStore = new Store('tokyo', 3, 24, 1.2, []);
@@ -82,7 +102,7 @@ tokyoStore.render();
 dubaiStore.render();
 parisStore.render();
 limaStore.render();
-
+renderHeader();
 
 
 
