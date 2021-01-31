@@ -1,10 +1,9 @@
 # Lab 6
 
-## Project Name
+## Salmon Cookies
+I am in the process of building an app to track the sell of salmon cookies. It should track sales by every hour at 5 different locations
 
-I built an app with a direct and powerful purpose. My app does all of the things that it accomplishes well. Here  I describe the purpose and functionality so those that visit my README understand the app.
-
-### Author: Student/Group Name
+### Author: Michael Hendricks
 
 ### Links and Resources
 * [submission PR](http://xyz.com)
