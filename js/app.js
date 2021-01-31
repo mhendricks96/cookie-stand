@@ -280,7 +280,7 @@ let limaStore = {
   },
 };
 
-//Executable code
+//ExecutableCode
 seattleStore.render();
 tokyoStore.render();
 dubaiStore.render();
