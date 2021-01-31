@@ -59,7 +59,7 @@ Store.prototype.render = function () {
     //create element
     let td = document.createElement('td');
     //give it content
-    td.textContent = `${hours[i]}: ${(this.cookiesPerHour[i])} cookies`;
+    td.textContent = `${(this.cookiesPerHour[i])}`;
     //append it to the DOM
     tr.appendChild(td);
   }
