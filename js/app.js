@@ -64,7 +64,6 @@ Store.prototype.render = function () {
     tr.appendChild(td);
   }
 
-
   let td = document.createElement('td');
   td.textContent = this.dailyTotal;
   tr.appendChild(td);
