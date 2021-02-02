@@ -7,7 +7,8 @@ const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm',
 //let allStores = [];
 //let storeTable = document.getElementById('StoreSales');
 let myContainer = document.getElementById('container');
-let cookieTable = document.getElementById('cookie-table');
+//let cookieTable = document.getElementById('cookie-table');
+let tbody = document.getElementById('body-rows');
 //let tableHeader = document.getElementById('table-header');
 //let tablefooter = document.getElementById('table-footer');
 
@@ -28,8 +29,9 @@ function Store (name, minHourlyCustomers, maxHourlyCustomers, avgPerCustomer, co
   this.name = name,
   this.min = minHourlyCustomers,
   this.max = maxHourlyCustomers,
-  this.avg = avgPerCustomer;
-  this.cookiesPerHour = cookiesSoldPerHourArray;
+  this.avg = avgPerCustomer,
+  this.cookiesPerHour = cookiesSoldPerHourArray,
+  this.dailyTotal = 0;
 }
 
 Store.prototype.randomCustomersEachHour = function () {
@@ -47,9 +49,8 @@ Store.prototype.calcCookiesSoldHourly = function (){
 
 Store.prototype.render = function () {
   this.calcCookiesSoldHourly();//continues the line of tethering
-
   let tr = document.createElement('tr');
-  cookieTable.appendChild(tr);
+
 
   let th = document.createElement('th');
   th.textContent = this.name;
@@ -69,6 +70,7 @@ Store.prototype.render = function () {
   let td = document.createElement('td');
   td.textContent = this.dailyTotal;
   tr.appendChild(td);
+  tbody.appendChild(tr);
 };
 
 function renderHeader(){
@@ -78,6 +80,10 @@ function renderHeader(){
     th.textContent = hours[i];
     header.appendChild(th);
   }
+
+  let th = document.createElement('th');
+  th.textContent = 'Store Daily Total';
+  header.appendChild(th);
 
 
 }
