@@ -1,10 +1,38 @@
-* {
-  background-color: bisque;
+
+body {
+  font-family: 'Slabo 27px', serif;
+  background-color: bisque
+}
+
+header {
+  background-color: rgb(46, 138, 122);
+  height: 100px;
+}
+
+nav {
+  width: 960px;
+  margin: auto;
+  background-color: rgb(46, 138, 122);
+}
+nav a {
+  text-decoration: none;
+  color: salmon;
+}
+
+header span {
+  line-height: 100px;
+  text-align: center;
+  margin-left: 300px;
+}
+
+li {
+  display: inline-block;
+  padding: 20px;
 }
 
 
 h1 {
-  font-size: 30px;
+  font-size: 100px;
   text-align: center;
   padding: 20px;
   font-family: 'Sriracha', cursive;
