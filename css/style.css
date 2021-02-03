@@ -7,6 +7,7 @@ h1 {
   font-size: 30px;
   text-align: center;
   padding: 20px;
+  font-family: 'Sriracha', cursive;
 
 }
 
@@ -15,6 +16,7 @@ table {
   border-spacing: 5px;
   margin: 25px auto;
   border-collapse: separate;
+  font-family: 'Slabo 27px', serif;
 }
 
 th, td {
