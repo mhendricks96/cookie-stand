@@ -14,12 +14,6 @@ let tbody = document.getElementById('body-rows');
 
 console.log(myContainer);
 
-//get elements by id for 5 lists
-//let seattleList = document.getElementById('seattle');
-//let tokyoList = document.getElementById('tokyo');
-//let dubaiList = document.getElementById('dubai');
-//let parisList = document.getElementById('paris');
-//let limaList = document.getElementById('lima');
 
 // write 5 object literals
 
