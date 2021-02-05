@@ -14,12 +14,6 @@ let tbody = document.getElementById('body-rows');
 
 console.log(myContainer);
 
-//get elements by id for 5 lists
-//let seattleList = document.getElementById('seattle');
-//let tokyoList = document.getElementById('tokyo');
-//let dubaiList = document.getElementById('dubai');
-//let parisList = document.getElementById('paris');
-//let limaList = document.getElementById('lima');
 
 // write 5 object literals
 
@@ -34,6 +28,7 @@ function Store (name, minHourlyCustomers, maxHourlyCustomers, avgPerCustomer) {
   this.dailyTotal = 0;
   allStores.push(this);//pushing all instances of object into array
   //this.render(); can use to render stores instead of all the individual store renders at the bottom
+  //this.render();
 }
 
 //this came from Math.random
@@ -90,17 +85,25 @@ function renderHeader(){
 
 }
 
+function renderAll(){
+  renderHeader();
+  for (let i = 0; i < allStores.length; i++){
+    allStores[i].render();
+  }
+}
 
-let seattleStore = new Store('seattle', 23, 65, 6.3, []);
-let tokyoStore = new Store('tokyo', 3, 24, 1.2, []);
-let dubaiStore = new Store('dubai', 11, 38, 3.7, []);
-let parisStore = new Store('paris', 20, 38, 2.3, []);
-let limaStore = new Store('lima', 2, 16, 4.6, []);
 
-renderHeader();
-seattleStore.render();
-tokyoStore.render();
-dubaiStore.render();
-parisStore.render();
-limaStore.render();
+new Store('seattle', 23, 65, 6.3, []);
+new Store('tokyo', 3, 24, 1.2, []);
+new Store('dubai', 11, 38, 3.7, []);
+new Store('paris', 20, 38, 2.3, []);
+new Store('lima', 2, 16, 4.6, []);
+
+
+renderAll();
+//seattleStore.render();
+//tokyoStore.render();
+//dubaiStore.render();
+//parisStore.render();
+//limaStore.render();
 
