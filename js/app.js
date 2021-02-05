@@ -85,13 +85,6 @@ function renderHeader(){
 
 }
 
-//let allStores = [
-//seattle[i],
-//tokyo[i],
-//dubai[i],
-//paris[i],
-//lima[i],
-//];
 
 function renderAll(){
   renderHeader();
