@@ -10,7 +10,7 @@ let myContainer = document.getElementById('container');
 //let cookieTable = document.getElementById('cookie-table');
 let tbody = document.getElementById('body-rows');
 //let tableHeader = document.getElementById('table-header');
-//let tablefooter = document.getElementById('table-footer');
+
 
 console.log(myContainer);
 
@@ -85,12 +85,30 @@ function renderHeader(){
 
 }
 
+
 function renderAll(){
   renderHeader();
   for (let i = 0; i < allStores.length; i++){
     allStores[i].render();
   }
 }
+
+
+
+
+function renderFooter(){
+  let footer = document.getElementById('table-footer');
+  for (let i = 0; i < allStores.length; i++){
+    let td = document.createElement('td');
+    td.textContent = allStores[i];
+    footer.appendChild(td);
+    //for (let j = 0; j < allStores.length; j++){
+      //str += allStores[i][j];
+    //}
+    //console.log(str);
+  }
+}
+
 
 
 new Store('seattle', 23, 65, 6.3, []);
@@ -101,6 +119,7 @@ new Store('lima', 2, 16, 4.6, []);
 
 
 renderAll();
+renderFooter();
 //seattleStore.render();
 //tokyoStore.render();
 //dubaiStore.render();
