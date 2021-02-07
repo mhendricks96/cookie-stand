@@ -77,7 +77,7 @@ Store.prototype.render = function () {
 
   let totalColumn = document.createElement('td');
   totalColumn.textContent = this.dailyTotal;
- 
+
   firstRow.appendChild(totalColumn);
   document.getElementById('table').appendChild(firstRow);
   allStores.push(this);
