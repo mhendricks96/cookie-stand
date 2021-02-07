@@ -161,6 +161,12 @@ function handleSubmit(event){
 
   let newStoreCookiesPerCustomer = event.target.AvgCookiesPerCustomer.value;
   console.log(newStoreCookiesPerCustomer);
+
+  let newStoreHourlyMin = event.target.MinHourlyCustomers.value;
+  console.log(newStoreHourlyMin);
+
+  let newStoreHourlyMax = event.target.MaxHourlyCustomers.value;
+  console.log(newStoreHourlyMax);
 }
 
 
