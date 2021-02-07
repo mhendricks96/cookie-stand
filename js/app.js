@@ -10,7 +10,9 @@ let allStores = [];
 //let cookieTable = document.getElementById('cookie-table');
 //let tbody = document.getElementById('body-rows');
 //let tableHeader = document.getElementById('table-header');
-
+//Event Handler
+//step 1: get element from the DOM
+let myForm = document.getElementById('container-two');
 
 //console.log(myContainer);
 
@@ -100,14 +102,39 @@ function total(){
     let footerCell = document.createElement('th');
 
     footerCell.textContent = columnTotal;
-    //footerCell.className = 'cellIndex';
+
     footerRow.appendChild(footerCell);
     columnTotal = 0;
 
   }
 }
 
+//form event handler
+// step 3:declare the callback function with ONE parameter
+//parameter = event
 
+
+function handleSubmit(event){
+  event.preventDefault();
+
+  let newStoreName = event.target.storename.value;
+  //console.log(newStoreName);
+
+  let newStoreCookiesPerCustomer = +event.target.AvgCookiesPerCustomer.value;
+  //console.log(newStoreCookiesPerCustomer);
+
+  let newStoreHourlyMin = +event.target.MinHourlyCustomers.value;
+  //console.log(newStoreHourlyMin);
+
+  let newStoreHourlyMax = +event.target.MaxHourlyCustomers.value;
+  //console.log(newStoreHourlyMax);
+
+  //let newStoreInfo = [newStoreName, newStoreHourlyMin, newStoreHourlyMax, newStoreCookiesPerCustomer, []];
+  //console.log(newStore);
+
+  let newStore = new Store(newStoreName, newStoreHourlyMin, newStoreHourlyMax, newStoreCookiesPerCustomer, []);
+  newStore.render();
+}
 
 
 
@@ -121,7 +148,6 @@ function total(){
 //allStores[i].render();
 //}
 //}
-
 
 
 
@@ -144,31 +170,6 @@ limaStore.render();
 
 document.getElementById('tfoot').appendChild(footerRow);
 total();
-
-//Event Handler
-//step 1: get element from the DOM
-let myForm = document.getElementById('container-two');
-
-
-//form event handler
-// step 3:declare the callback function with ONE parameter
-//parameter = event
-function handleSubmit(event){
-  event.preventDefault();
-
-  let newStoreName = event.target.storename.value;
-  console.log(newStoreName);
-
-  let newStoreCookiesPerCustomer = event.target.AvgCookiesPerCustomer.value;
-  console.log(newStoreCookiesPerCustomer);
-
-  let newStoreHourlyMin = event.target.MinHourlyCustomers.value;
-  console.log(newStoreHourlyMin);
-
-  let newStoreHourlyMax = event.target.MaxHourlyCustomers.value;
-  console.log(newStoreHourlyMax);
-}
-
 
 //step 2: add event listener, pass in the two arguments:
 //argument 1: event name
