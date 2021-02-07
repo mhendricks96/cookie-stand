@@ -144,3 +144,28 @@ limaStore.render();
 
 document.getElementById('tfoot').appendChild(footerRow);
 total();
+
+//Event Handler
+//step 1: get element from the DOM
+let myForm = document.getElementById('container-two');
+
+
+//form event handler
+// step 3:declare the callback function with ONE parameter
+//parameter = event
+function handleSubmit(event){
+  event.preventDefault();
+
+  let newStoreName = event.target.storename.value;
+  console.log(newStoreName);
+
+  let newStoreCookiesPerCustomer = event.target.AvgCookiesPerCustomer.value;
+  console.log(newStoreCookiesPerCustomer);
+}
+
+
+//step 2: add event listener, pass in the two arguments:
+//argument 1: event name
+//argument 2: function name CALLBACK function
+
+myForm.addEventListener('submit' , handleSubmit);

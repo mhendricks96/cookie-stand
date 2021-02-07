@@ -63,6 +63,10 @@ h1 {
 
 }
 
+h2 {
+  text-align: center;
+}
+
 article p {
   text-align: center;
   padding-top: 20px;
