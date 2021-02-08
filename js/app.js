@@ -5,11 +5,11 @@
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm',];
 
 let allStores = [];
-//let storeTable = document.getElementById('StoreSales');
+let storeTable = document.getElementById('table');
 //let myContainer = document.getElementById('container');
-//let cookieTable = document.getElementById('cookie-table');
-//let tbody = document.getElementById('body-rows');
-//let tableHeader = document.getElementById('table-header');
+let tfoot = document.createElement('tfoot');
+let footerTotals = [];
+let grandTotals = 0;
 //Event Handler
 //step 1: get element from the DOM
 let myForm = document.getElementById('container-two');
@@ -26,7 +26,6 @@ function Store (name, minHourlyCustomers, maxHourlyCustomers, avgPerCustomer) {
   this.min = minHourlyCustomers;
   this.max = maxHourlyCustomers;
   this.avg = avgPerCustomer;
-  this.customersEachHour = [];
   this.cookiesPerHour = [];
   this.dailyTotal = 0;
   allStores.push(this);//pushing all instances of object into array
@@ -36,22 +35,23 @@ function Store (name, minHourlyCustomers, maxHourlyCustomers, avgPerCustomer) {
 
 //this came from Math.random
 Store.prototype.calcHourlyCustomers = function () {
-  for (let i =0; i < hours.length; i++){
-    this.customersEachHour.push(Math.floor(Math.random() * (this.max - this.min)) + this.min);
-  }
+  return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
 };
 
 Store.prototype.calcCookiesPerHour = function (){
   for (let i = 0; i < hours.length; i++){
-    this.cookiesPerHour.push(this.customersEachHour[i] * Math.ceil(this.avg));
+    let customersThisHour = this.calcHourlyCustomers();
+    let cookiesThisHour = Math.ceil(customersThisHour * this.avg);
+    this.cookiesPerHour.push(cookiesThisHour);
+    this.dailyTotal += cookiesThisHour;
   }
 };
 
-Store.prototype.calcTotalCookies = function(){
-  for (let i = 0; i < hours.length; i++){
-    this.dailyTotal += this.cookiesPerHour[i];
-  }
-};
+//Store.prototype.calcTotalCookies = function(){
+//for (let i = 0; i < hours.length; i++){
+//this.dailyTotal += this.cookiesPerHour[i];
+//}
+//};
 
 
 
