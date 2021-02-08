@@ -3,13 +3,16 @@
 //global variables
 //hours array
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm',];
-
-let allStores = [];
-let table = document.getElementById('table');
+let cookieTable = document.getElementById('cookie-table');
+let tableHeader = document.getElementById('table-header');
+let tableFooter = document.getElementById('table-footer');
+const allStores = [];
+//let table = document.getElementById('table');
 //let myContainer = document.getElementById('container');
-let tfoot = document.createElement('tfoot');
-let footerTotals = [];
-let grandTotal = 0;
+//let tfoot = document.createElement('tfoot');
+//let footerTotals = [];
+//let grandTotal = 0;
+//let newGrandTotal = new Array(hours.length + 1);
 //Event Handler
 //step 1: get element from the DOM
 let myForm = document.getElementById('container-two');
@@ -39,11 +42,12 @@ Store.prototype.calcHourlyCustomers = function (){
 };
 
 Store.prototype.calcCookiesPerHour = function (){
+  this.calcHourlyCustomers();
   for (let i = 0; i < hours.length; i++){
     let customersThisHour = this.calcHourlyCustomers();
     let cookiesThisHour = Math.ceil(customersThisHour * this.avg);
     this.cookiesPerHour.push(cookiesThisHour);
-    this.dailyTotal += cookiesThisHour;
+    this.dailyTotal = this.dailyTotal = this.cookiesPerHour[i];
   }
 };
 
@@ -54,23 +58,23 @@ Store.prototype.calcCookiesPerHour = function (){
 //};
 
 
-
 Store.prototype.render = function () {
 
   this.calcCookiesPerHour();
   //create table
-  let tbody = document.createElement('tbody');
-  table.appendChild(tbody);
+  //let tbody = document.createElement('tbody');
+  //table.appendChild(tbody);
 
   let tr = document.createElement('tr');
-  tbody.appendChild(tr);
+  cookieTable.appendChild(tr);
+  //tbody.appendChild(tr);
   //create first row with store names
-  let storeNames = document.createElement('th');
-  storeNames.textContent = this.name;
-  tr.appendChild(storeNames);
+  let th = document.createElement('th');
+  th.textContent = this.name;
 
+  tr.appendChild(th);
   //create loop for all store names
-  for (let i = 0; i < hours.length; i++){
+  for (let i = 0; i < this.cookiesPerHour.length; i++){
     //create element
     let td = document.createElement('td');
     //give it content
@@ -80,9 +84,9 @@ Store.prototype.render = function () {
   }
   //total column
 
-  let totalColumn = document.createElement('td');
-  totalColumn.textContent = this.dailyTotal;
-  tr.appendChild(totalColumn);
+  let td = document.createElement('td');
+  td.textContent = this.dailyTotal;
+  tr.appendChild(td);
 };
 
 //firstRow.appendChild(totalColumn);
@@ -93,39 +97,21 @@ Store.prototype.render = function () {
 
 
 let renderHeader = function() {
-  let thead = document.createElement('thead');
-  table.appendChild(thead);
-
   let tr = document.createElement('tr');
-  thead.appendChild(tr);
-
   let th = document.createElement('th');
-  th.textContent = 'Hours of Operation';
-  tr.appendChild(th).textContent;
-
-  for (let i = 0; i < hours.length; i++){
-    let th = document.createElement('th');
-    th.textContent = hours[i];
-    tr.appendChild(th);
-  }
-
-  th = document.createElement('th');
-  th.textContent = 'Daily Store Totals';
+  th.textContent = '';
   tr.appendChild(th);
-};
 
-let calcFooterTotals = function(){
-  footerTotals = [];
-  grandTotal = 0;
   for (let i = 0; i < hours.length; i++){
-    let hourlyTotal = 0;
-    for (let j = 0; j < allStores.length; j++){
-      hourlyTotal += allStores[j].cookiesPerHour[i];
-    }
-    //these next 2 lines are what took me so long to figure out
-    footerTotals.push(hourlyTotal);
-    grandTotal += hourlyTotal;
+    let td = document.createElement('td');
+    td.textContent = hours[i];
+    tr.appendChild(td);
   }
+
+  let td = document.createElement('td');
+  td.textContent = 'Daily Store Totals';
+  tr.appendChild(td);
+  tableHeader.appendChild(tr);
 };
 
 let renderAllStores = function() {
@@ -134,28 +120,47 @@ let renderAllStores = function() {
   }
 };
 
+let calcGrandTotals = function(){
+  let newGrandTotal = new Array(hours.length + 1);
+  //footerTotals = [];
+  newGrandTotal.fill(0);
+  for (let i = 0; i < allStores.length; i++){
+    for (let j = 0; j < allStores[i].cookiesPerHour.length; j++){
+      newGrandTotal[j] += allStores[i].cookiesPerHour[j];
+      newGrandTotal[newGrandTotal.length - 1] += allStores[i].cookiesPerHour[j];
+    }
+    //these next 2 lines are what took me so long to figure out
+    //footerTotals.push(hourlyTotal);
+    //grandTotal += hourlyTotal;
+  }
+
+  return newGrandTotal;
+};
+
+
+
 
 
 let renderFooter = function(){
-  calcFooterTotals();
-  table.appendChild(tfoot);
-
+  let newGrandTotal = calcGrandTotals();
   let tr = document.createElement('tr');
-  tfoot.appendChild(tr);
-
   let th = document.createElement('th');
-  th.textContent = 'Total Sales this hour';
+  th.textContent = 'Totals';
   tr.appendChild(th);
 
-  for (let i = 0; i < hours.length; i++) {
+
+  //tfoot.appendChild(tr);
+
+  //let th = document.createElement('th');
+  //th.textContent = 'Total Sales this hour';
+  //tr.appendChild(th);
+
+  for (let i = 0; i < newGrandTotal.length; i++) {
     let td = document.createElement('td');
-    td.textContent = footerTotals[i];
+    td.textContent = newGrandTotal[i];
     tr.appendChild(td);
   }
-
-  let td = document.createElement('td');
-  td.textContent = grandTotal;
-  tr.appendChild(td);
+  tableFooter.appendChild(tr);
 };
 
 
@@ -185,6 +190,9 @@ function handleSubmit(event){
 
   let newStore = new Store(newStoreName, newStoreHourlyMin, newStoreHourlyMax, newStoreCookiesPerCustomer, []);
   newStore.render();
+  //HERE IT IS!! THIS SHOULD CHANGE THE TOTALS WHEN ADDING A NEW STORE
+  tableFooter.removeChild(tableFooter.lastChild);
+  renderFooter();
 }
 
 
@@ -196,10 +204,10 @@ new Store('dubai', 11, 38, 3.7, []);
 new Store('paris', 20, 38, 2.3, []);
 new Store('lima', 2, 16, 4.6, []);
 
-
+renderHeader();
 renderAllStores();
 renderFooter();
-renderHeader();
+
 //seattleStore.render();
 //tokyoStore.render();
 //dubaiStore.render();
