@@ -165,8 +165,8 @@ let renderFooter = function(){
 
 
 
-//form event handler
-// step 3:declare the callback function with ONE parameter
+//form event handlr
+// step 3:declare the callback function wth ONE parameter
 //parameter = event
 
 
