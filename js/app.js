@@ -129,9 +129,7 @@ let calcGrandTotals = function(){
       newGrandTotal[j] += allStores[i].cookiesPerHour[j];
       newGrandTotal[newGrandTotal.length - 1] += allStores[i].cookiesPerHour[j];
     }
-    //these next 2 lines are what took me so long to figure out
-    //footerTotals.push(hourlyTotal);
-    //grandTotal += hourlyTotal;
+
   }
 
   return newGrandTotal;
