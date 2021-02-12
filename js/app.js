@@ -7,17 +7,12 @@ let cookieTable = document.getElementById('cookie-table');
 let tableHeader = document.getElementById('table-header');
 let tableFooter = document.getElementById('table-footer');
 const allStores = [];
-//let table = document.getElementById('table');
-//let myContainer = document.getElementById('container');
-//let tfoot = document.createElement('tfoot');
-//let footerTotals = [];
-//let grandTotal = 0;
-//let newGrandTotal = new Array(hours.length + 1);
+
+
 //Event Handler
 //step 1: get element from the DOM
 let myForm = document.getElementById('container-two');
 
-//console.log(myContainer);
 
 
 // write 5 object literals
@@ -32,8 +27,6 @@ function Store (name, minHourlyCustomers, maxHourlyCustomers, avgPerCustomer) {
   this.cookiesPerHour = [];
   this.dailyTotal = 0;
   allStores.push(this);//pushing all instances of object into array
-  //this.render(); can use to render stores instead of all the individual store renders at the bottom
-  //this.render();
 }
 
 //this came from Math.random
@@ -51,23 +44,15 @@ Store.prototype.calcCookiesPerHour = function (){
   }
 };
 
-//Store.prototype.calcTotalCookies = function(){
-//for (let i = 0; i < hours.length; i++){
-//this.dailyTotal += this.cookiesPerHour[i];
-//}
-//};
-
 
 Store.prototype.render = function () {
 
   this.calcCookiesPerHour();
   //create table
-  //let tbody = document.createElement('tbody');
-  //table.appendChild(tbody);
 
   let tr = document.createElement('tr');
   cookieTable.appendChild(tr);
-  //tbody.appendChild(tr);
+
   //create first row with store names
   let th = document.createElement('th');
   th.textContent = this.name;
@@ -89,12 +74,6 @@ Store.prototype.render = function () {
   tr.appendChild(td);
 };
 
-//firstRow.appendChild(totalColumn);
-//document.getElementById('table').appendChild(firstRow);
-//allStores.push(this);
-
-
-
 
 let renderHeader = function() {
   let tr = document.createElement('tr');
@@ -114,15 +93,17 @@ let renderHeader = function() {
   tableHeader.appendChild(tr);
 };
 
+
 let renderAllStores = function() {
   for (let i = 0; i < allStores.length; i++){
     allStores[i].render();
   }
 };
 
+
 let calcGrandTotals = function(){
   let newGrandTotal = new Array(hours.length + 1);
-  //footerTotals = [];
+
   newGrandTotal.fill(0);
   for (let i = 0; i < allStores.length; i++){
     for (let j = 0; j < allStores[i].cookiesPerHour.length; j++){
@@ -136,22 +117,12 @@ let calcGrandTotals = function(){
 };
 
 
-
-
-
 let renderFooter = function(){
   let newGrandTotal = calcGrandTotals();
   let tr = document.createElement('tr');
   let th = document.createElement('th');
   th.textContent = 'Totals';
   tr.appendChild(th);
-
-
-  //tfoot.appendChild(tr);
-
-  //let th = document.createElement('th');
-  //th.textContent = 'Total Sales this hour';
-  //tr.appendChild(th);
 
   for (let i = 0; i < newGrandTotal.length; i++) {
     let td = document.createElement('td');
@@ -183,8 +154,6 @@ function handleSubmit(event){
   let newStoreHourlyMax = +event.target.MaxHourlyCustomers.value;
   //console.log(newStoreHourlyMax);
 
-  //let newStoreInfo = [newStoreName, newStoreHourlyMin, newStoreHourlyMax, newStoreCookiesPerCustomer, []];
-  //console.log(newStore);
 
   let newStore = new Store(newStoreName, newStoreHourlyMin, newStoreHourlyMax, newStoreCookiesPerCustomer, []);
   newStore.render();
@@ -194,8 +163,7 @@ function handleSubmit(event){
 }
 
 
-
-
+//usable code
 new Store('seattle', 23, 65, 6.3, []);
 new Store('tokyo', 3, 24, 1.2, []);
 new Store('dubai', 11, 38, 3.7, []);
@@ -205,16 +173,6 @@ new Store('lima', 2, 16, 4.6, []);
 renderHeader();
 renderAllStores();
 renderFooter();
-
-//seattleStore.render();
-//tokyoStore.render();
-//dubaiStore.render();
-//parisStore.render();
-//limaStore.render();
-
-
-//document.getElementById('tfoot').appendChild(footerRow);
-//total();
 
 //step 2: add event listener, pass in the two arguments:
 //argument 1: event name
